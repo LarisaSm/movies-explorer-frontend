@@ -12,9 +12,13 @@
  * {margin:0; padding:0; box-sizing: border-box;}
 
  html {
-  line-height: 1.15; /* 1 */
+  /* line-height: 1.15;  */
   -webkit-text-size-adjust: 100%; /* 2 */
-  scroll-behavior: smooth; 
+  /* scroll-behavior: smooth;  */
+  /* overflow: hidden; */
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* Sections
@@ -26,6 +30,7 @@
 
 body {
   margin: 0;
+  /* overflow: hidden; */
 }
 
 /**

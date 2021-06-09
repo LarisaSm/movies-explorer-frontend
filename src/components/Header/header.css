@@ -23,6 +23,7 @@
 .header__main {
     min-height: 74px; 
     width: 100%;
+    margin: auto;
     max-width: 1140px; 
     display: flex;
     justify-content: space-between;

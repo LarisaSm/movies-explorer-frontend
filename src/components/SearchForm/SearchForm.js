@@ -8,7 +8,7 @@ function SearchForm()  {
   return (
 <div className="movies__find">
           <div className="movies__inputBox">
-            <input className="movies__findInput" placeholder="Фильмы"></input>
+            <input className="movies__findInput" placeholder="Фильмы" required></input>
             <button className="movies__findButton">Поиск</button>
           </div>
           <label className="movies__label" for="movies__checkbox">
