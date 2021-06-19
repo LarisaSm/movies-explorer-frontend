@@ -17,3 +17,7 @@
 .form__inputs {
   min-height: 266px;
 }
+
+.input-error_active {
+  color: #EE3465;
+}
