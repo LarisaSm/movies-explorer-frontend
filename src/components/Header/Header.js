@@ -1,7 +1,7 @@
 import './header.css'
 import React from "react";
 import logo from "../../images/header__logo.svg";
-import { Link, useLocation, NavLink, Route, Switch } from "react-router-dom";
+import { Link, NavLink, Route, Switch } from "react-router-dom";
 
 // function Header({ loggedIn, userData, signOut }) {
 function Header() {
@@ -10,18 +10,18 @@ function Header() {
 
   const [navMenuStatus, setNavMenuStatus] = React.useState(false);
 
-  const loggedIn = false;
-  const userData = {email: 'www',};
-  const signOut = 'test';
+  // const loggedIn = false;
+  // const userData = {email: 'www',};
+  // const signOut = 'test';
 
 
   function openNavMenu () {
-    console.log("====open=======");
+    // console.log("====open=======");
     setNavMenuStatus(true);
   }
 
   function closeNavMenu () {
-    console.log("====close=======");
+    // console.log("====close=======");
     setNavMenuStatus(false);
   }
 

@@ -22,6 +22,11 @@ border-radius: 3px;
   transition: background 2s ease;
 }
 
+.auth__save:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 .auth__save:focus {
   outline: none;
 }
