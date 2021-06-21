@@ -451,7 +451,7 @@ React.useEffect(() => {
         <ProtectedRoute
             exact path="/movies"
             component={Movies}
-            loggedIn={loggedIn}
+            loggedRouteIn={true}
             isFind={isFind} 
             setIsFind={setIsFind} 
             viewMovies={viewMovies} 
@@ -467,7 +467,7 @@ React.useEffect(() => {
         <ProtectedRoute
             exact path="/saved-movies"
             component={SavedMovies}
-            loggedIn={loggedIn}
+            loggedRouteIn={true}
             isFind={isSaveFind} 
             setIsFind={setIsSaveFind}  
             savedMovies={findSavedMovies} 
@@ -479,7 +479,7 @@ React.useEffect(() => {
           <ProtectedRoute
             exact path="/profile"
             component={Profile}
-            loggedIn={loggedIn}
+            loggedRouteIn={true}
             signOut={signOut}
             onUpdateUser={handleUpdateUser}
             isLoading={isLoading} 
@@ -487,12 +487,21 @@ React.useEffect(() => {
             setIsShowOk={setIsShowOk}
           />
        
-       <Route path="/sign-in">
-          <Login onLogin={handleLogin} setShowUserErrPopup={setShowUserErrPopup}/>
-        </Route>
-        <Route path="/sign-up">
-          <Register onRegister={handleRegister} setShowUserErrPopup={setShowUserErrPopup}/>
-        </Route>
+       <ProtectedRoute
+          exact path="/sign-in"
+          component={Login}
+          loggedRouteIn={false}
+            onLogin={handleLogin} 
+            setShowUserErrPopup={setShowUserErrPopup}
+        />
+
+        <ProtectedRoute
+          exact path="/sign-up"
+          component={Register}
+          loggedRouteIn={false}
+          onRegister={handleRegister} 
+          setShowUserErrPopup={setShowUserErrPopup}/>
+        
         <Route path="*">
           <PageNotFound />
         </Route>

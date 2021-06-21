@@ -9,7 +9,7 @@ const ProtectedRoute = ({ component: Component, ...props }) => {
   let loggedIn;
   const localIn = localStorage.getItem("isLogin");
 
-  if (localIn === 'true') {
+  if (localIn === 'true' && props.loggedRouteIn === true) {
     loggedIn = true;
   }
   else {
