@@ -8,7 +8,7 @@ import { useFormWithValidation } from '../Validate'
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 
-function Profile({signOut, onUpdateUser, isLoading, setShowUserErrPopup})  {
+function Profile({setIsShowOk, signOut, onUpdateUser, isLoading, setShowUserErrPopup})  {
   const [inputNameValue, setInputNameValue] = React.useState("");
   const [inputEmailValue, setInputEmailValue] = React.useState("");
   const currentUser = React.useContext(CurrentUserContext);
@@ -23,6 +23,7 @@ function Profile({signOut, onUpdateUser, isLoading, setShowUserErrPopup})  {
     e.preventDefault();
     if(validate.isValid && validate.isNew) {
       onUpdateUser(inputNameValue, inputEmailValue);
+      setIsShowOk(true);
       setShowUserErrPopup(true);
       validate.resetForm();
     }

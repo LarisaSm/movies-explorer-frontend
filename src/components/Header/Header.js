@@ -3,13 +3,17 @@ import React from "react";
 import logo from "../../images/header__logo.svg";
 import { Link, NavLink, Route, Switch } from "react-router-dom";
 
+
 // function Header({ loggedIn, userData, signOut }) {
 function Header() {
 
   // const match = useLocation();
 
+  // const [isLogin, setIsLogin] = React.useState();
+
   const [navMenuStatus, setNavMenuStatus] = React.useState(false);
 
+  const isLogin = localStorage.getItem("isLogin");
   // const loggedIn = false;
   // const userData = {email: 'www',};
   // const signOut = 'test';
@@ -27,9 +31,10 @@ function Header() {
 
   
 
-  function authorizationHeader () {
+  function authorizationHeader (isMain) {
+      const classNameHeader = isMain ? 'header page__header header__main-authorisation' : 'header page__header';
     return (
-      <header className="header page__header">
+      <header className={classNameHeader}>
         <div className="maxHeaderNav">
         <Link to="/"><img src={logo} alt="Лого" className="header__logo" /></Link>
           <nav className="header__mainnav">
@@ -73,6 +78,7 @@ function Header() {
     
       <Switch>
         <Route exact path="/">
+          { isLogin ? authorizationHeader(true) : (
           <header className="header page__header header_about">
             <div className="header__main">
             <Link to="/"><img src={logo} alt="Лого" className="header__logo" /></Link>
@@ -86,16 +92,16 @@ function Header() {
               </Link>
             </div>
             </div>
-          </header>
+          </header>)}
         </Route>
         <Route path="/movies">
-          {authorizationHeader}
+          {authorizationHeader(false)}
         </Route>
         <Route path="/saved-movies">
-          {authorizationHeader}
+          {authorizationHeader(false)}
         </Route>
         <Route path="/profile">
-          {authorizationHeader}
+          {authorizationHeader(false)}
         </Route>
 
 

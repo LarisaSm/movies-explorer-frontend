@@ -17,31 +17,30 @@ function Login({ onLogin, setShowUserErrPopup }) {
   const spanEmailClass = `auth__input-error ${validate.errors.email ? 'auth__input-error_active' : ''} `
   const spanPassClass = `auth__input-error ${validate.errors.pass ? 'auth__input-error_active' : ''} `
   
+  React.useEffect(() => {
+    setInputEmailValue("");
+    setInputPassValue("");
+  }, [])
 
   function handleSubmit(e) {
     e.preventDefault();
     if(validate.isValid) {
+
       onLogin(inputEmailValue, inputPassValue);
       setShowUserErrPopup(true);
-      setInputEmailValue("");
-      setInputPassValue("");
       validate.resetForm();
     }
     else return;
-    
   }
 
   function handleEmailChange(evt) {
     setInputEmailValue(evt.target.value);
     validate.handleChange(evt);
-   
-
   }
 
   function handlePassChange(evt) {
     setInputPassValue(evt.target.value);
     validate.handleChange(evt);
-
   }
 
   return (

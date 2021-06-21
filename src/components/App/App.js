@@ -19,7 +19,7 @@ import Errors from '../Errors/Errors'
 import { getAllMovies } from '../../utils/MoviesApi'
 import { editUserInfo, getSavedMovies, addMovie, deleteMovie, register, authorize, getContent } from '../../utils/MainApi'
 import CurrentUserContext from '../../contexts/CurrentUserContext';
-
+import { MOVIE_URL, DURATION_SHORT, COUNTER_MAX, COUNTER_ROW_MAX, COUNTER_MIDDLE, COUNTER_ROW_MIDDLE, COUNTER_MIN, COUNTER_ROW_MIN } from '../../utils/Constants'
 
 
 
@@ -42,6 +42,7 @@ function App() {
   const [counterMovies, setCounterMovies] = React.useState();
   const [counterRow, setCounterRow] = React.useState();
   const [viewMovies, setViewMovies] = React.useState([]);
+  const [isResetForm, setIsResetForm] = React.useState(false);
 
   const history = useHistory();
 
@@ -55,8 +56,9 @@ function App() {
   const [showErrPopup, setShowErrPopup] = React.useState(false);
   const [showUserErrPopup, setShowUserErrPopup] = React.useState(false);
   const [errorApiMessage, setErrorApiMessage] = React.useState('');
+  const [isShowOk, setIsShowOk] = React.useState(false);
 
-  const MOVIE_URL = "https://api.nomoreparties.co";
+  
 
 
   function showErr (err) {
@@ -84,16 +86,16 @@ function App() {
   
   React.useEffect( () => {
     if (windowInnerWidth >= 1270) {
-      setWindowCounterMovies(12);
-      setCounterRow(3);
+      setWindowCounterMovies(COUNTER_MAX);
+      setCounterRow(COUNTER_ROW_MAX);
     }
     else if (windowInnerWidth >= 760) {
-      setWindowCounterMovies(8);
-      setCounterRow(2);
+      setWindowCounterMovies(COUNTER_MIDDLE);
+      setCounterRow(COUNTER_ROW_MIDDLE);
     }
     else {
-      setWindowCounterMovies(5);
-      setCounterRow(1);
+      setWindowCounterMovies(COUNTER_MIN);
+      setCounterRow(COUNTER_ROW_MIN);
     }
   }, [windowInnerWidth]);
 
@@ -147,11 +149,11 @@ function App() {
     // if(world === ''){
     //   return
     // }
-    let durationFilter = 40;
+    let durationFilter = DURATION_SHORT;
     if (inputShortValue) 
     {durationFilter = 0;
     }
-   else {durationFilter = 40}
+   else {durationFilter = DURATION_SHORT}
     // console.log(durationFilter)
     setCounterMovies(windowCounterMovies);
     setIsLoading(true);
@@ -169,11 +171,11 @@ function App() {
     setIsLoading(true);
     // console.log("FILTERFILTER!!!!!!");
     // console.log(inputShortValue);
-    let durationFilter = 40;
+    let durationFilter = DURATION_SHORT;
     if (inputShortValue) 
     {durationFilter = 0;
     }
-   else {durationFilter = 40}
+   else {durationFilter = DURATION_SHORT}
     
     // setFindMovies(movies.filter(item => item.nameRU.includes(world)));
     const filterSavedMovies = savedMovies.filter(item => item.nameRU.includes(world));
@@ -269,6 +271,7 @@ function handleRegister(inputPassValue, inputEmailValue, inputNameValue) {
     .then((data) => {
       if (data._id) {
         // setConfirmAuth(true);
+        setIsResetForm(true);
         history.push("/sign-in");
       }
       // setInfoTooltipOpen(true);
@@ -287,6 +290,7 @@ function handleLogin(inputEmailValue, inputPassValue) {
     .then((data) => {
       if (data.token) {
         setLoggedIn(true);
+        setIsResetForm(true);
         setСurrentUser({ email: data.email, name: data.name });
         setCurrentUserHeaders(data.token);
         history.push("/movies");
@@ -305,6 +309,7 @@ function handleUpdateUser(name, email) {
     .then((res) => {
       setСurrentUser(res)})
     .then(() => {
+      showErr({"message": "Данные успешно обновлены"})
       setIsLoading(false);
     })
     .catch((err) => {
@@ -332,7 +337,7 @@ function tokenCheck () {
   
       getContent(jwt)
       .then((res) => {
-        if (res) {
+        if (res.name) {
           // авторизуем пользователя
           setLoggedIn(true);
           setСurrentUser({ email: res.email, name: res.name });
@@ -479,12 +484,13 @@ React.useEffect(() => {
             onUpdateUser={handleUpdateUser}
             isLoading={isLoading} 
             setShowUserErrPopup={setShowUserErrPopup}
+            setIsShowOk={setIsShowOk}
           />
        
-       <Route exact path="/sign-in">
+       <Route path="/sign-in">
           <Login onLogin={handleLogin} setShowUserErrPopup={setShowUserErrPopup}/>
         </Route>
-        <Route exact path="/sign-up">
+        <Route path="/sign-up">
           <Register onRegister={handleRegister} setShowUserErrPopup={setShowUserErrPopup}/>
         </Route>
         <Route path="*">
@@ -492,7 +498,7 @@ React.useEffect(() => {
         </Route>
       </Switch>
       <Footer />
-      <Errors isShow={showUserErrPopup} isOpen={showErrPopup} onClose={closeErrPopup} errorMessage={errorMessage}/>
+      <Errors isOk={isShowOk} isShow={showUserErrPopup} isOpen={showErrPopup} onClose={closeErrPopup} errorMessage={errorMessage}/>
     </div>
     </CurrentUserContext.Provider>
 
