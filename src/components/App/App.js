@@ -14,6 +14,8 @@ import Login from '../Login/Login'
 import Register from '../Register/Register'
 import PageNotFound from '../PageNotFound/PageNotFound'
 import ProtectedRoute from '../ProtectedRoute'
+import ProtectedRouteAuth from '../ProtectedRouteAuth'
+
 import Errors from '../Errors/Errors'
 
 import { getAllMovies } from '../../utils/MoviesApi'
@@ -325,6 +327,7 @@ function signOut() {
   localStorage.removeItem("searchCheck");
   localStorage.removeItem("searchSaveWord");
   localStorage.removeItem("searchWord");
+  setСurrentUser({name:'', email:''});
   history.push("/");
 }
 
@@ -451,7 +454,6 @@ React.useEffect(() => {
         <ProtectedRoute
             exact path="/movies"
             component={Movies}
-            loggedRouteIn={true}
             isFind={isFind} 
             setIsFind={setIsFind} 
             viewMovies={viewMovies} 
@@ -467,7 +469,6 @@ React.useEffect(() => {
         <ProtectedRoute
             exact path="/saved-movies"
             component={SavedMovies}
-            loggedRouteIn={true}
             isFind={isSaveFind} 
             setIsFind={setIsSaveFind}  
             savedMovies={findSavedMovies} 
@@ -479,7 +480,6 @@ React.useEffect(() => {
           <ProtectedRoute
             exact path="/profile"
             component={Profile}
-            loggedRouteIn={true}
             signOut={signOut}
             onUpdateUser={handleUpdateUser}
             isLoading={isLoading} 
@@ -487,18 +487,16 @@ React.useEffect(() => {
             setIsShowOk={setIsShowOk}
           />
        
-       <ProtectedRoute
+       <ProtectedRouteAuth
           exact path="/sign-in"
           component={Login}
-          loggedRouteIn={false}
-            onLogin={handleLogin} 
-            setShowUserErrPopup={setShowUserErrPopup}
+          onLogin={handleLogin} 
+          setShowUserErrPopup={setShowUserErrPopup}
         />
 
-        <ProtectedRoute
+        <ProtectedRouteAuth
           exact path="/sign-up"
           component={Register}
-          loggedRouteIn={false}
           onRegister={handleRegister} 
           setShowUserErrPopup={setShowUserErrPopup}/>
         

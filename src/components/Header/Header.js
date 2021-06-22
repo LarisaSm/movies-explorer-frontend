@@ -2,27 +2,42 @@ import './header.css'
 import React from "react";
 import logo from "../../images/header__logo.svg";
 import { Link, NavLink, Route, Switch } from "react-router-dom";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 
 // function Header({ loggedIn, userData, signOut }) {
 function Header() {
 
   // const match = useLocation();
+  const currentUser = React.useContext(CurrentUserContext);
 
-  // const [isLogin, setIsLogin] = React.useState();
+  const [isLogin, setIsLogin] = React.useState(localStorage.getItem("isLogin"));
 
   const [navMenuStatus, setNavMenuStatus] = React.useState(false);
 
-  const isLogin = localStorage.getItem("isLogin");
+  // const isLogin = localStorage.getItem("isLogin");
   // const loggedIn = false;
   // const userData = {email: 'www',};
   // const signOut = 'test';
-
-
+ 
   function openNavMenu () {
     // console.log("====open=======");
     setNavMenuStatus(true);
   }
+
+console.log(currentUser.name);
+
+React.useEffect(() => {
+console.log(currentUser.name);
+
+  if(currentUser.name) {
+    setIsLogin(true);
+  }
+  else {
+    setIsLogin(false);
+
+  }
+}, [currentUser.name])
 
   function closeNavMenu () {
     // console.log("====close=======");
@@ -78,7 +93,7 @@ function Header() {
     
       <Switch>
         <Route exact path="/">
-          { isLogin ? authorizationHeader(true) : (
+          { ( isLogin ) ? authorizationHeader(true) : (
           <header className="header page__header header_about">
             <div className="header__main">
             <Link to="/"><img src={logo} alt="Лого" className="header__logo" /></Link>
