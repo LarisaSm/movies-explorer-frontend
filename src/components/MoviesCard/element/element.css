@@ -1,0 +1,32 @@
+@import url('./__img/element__img.css');
+@import url('./__like-counter/element__like-counter.css');
+@import url('./__like/element__like.css');
+@import url('./__like/_type/element__like_type_active.css');
+@import url('./__likes/element__likes.css');
+@import url('./__name/element__name.css');
+@import url('./__title/element__title.css');
+@import url('./__trash/element__trash.css');
+/* @import url('./__trash/_invisible/element__trash_invisible.css'); */
+@import url('./__duration/element__duration.css');
+
+
+
+.element {
+  margin: 0;
+  position: relative;
+  background: #222222;
+box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+border-radius: 6px;
+}
+
+.element:hover .element__trash{
+display: block;
+cursor: pointer;
+}
+
+.element:hover {
+  cursor: pointer;
+}
+
+
+

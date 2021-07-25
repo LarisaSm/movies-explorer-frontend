@@ -1,0 +1,193 @@
+@import url('./__link/header__link.css');
+@import url('./__link/_type/header__link_signout.css');
+@import url('./__logo/header__logo.css');
+@import url('./__user/header__user.css');
+@import url('./__button/header__button.css');
+@import url('./page__header.css');
+@import url('./__authorization/header__authorization.css');
+@import url('./__navLink/header__navLink.css');
+@import url('./__navLink/_type/header__navLink_active.css');
+@import url('./__navButton/header__navButton.css');
+@import url('./__authTitle/header__authTitle.css');
+@import url('./__auth/header__auth.css');
+
+.header {
+  /* min-height: 74px; */
+  width: 100%;
+
+  /* max-width: 1140px; */
+  /* display: flex;
+  justify-content: space-between;
+  align-items: center; */
+}
+
+.header__main-authorisation {
+  background-color: #073042;
+}
+
+.header__main {
+    min-height: 74px; 
+    width: 100%;
+    margin: auto;
+    max-width: 1140px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header_about {
+  background-color: #073042;
+}
+
+.maxHeaderNav {
+  min-height: 74px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.minHeaderNav {
+display: none;
+min-height: 74px;
+justify-content: space-between;
+  align-items: center;
+}
+
+.header__openMenu {
+width: 44px;
+height: 44px;
+background-image: url('../../images/header__openMenu.svg');
+border: none;
+background-color: inherit;
+}
+
+.navSection {
+  width: 520px;
+  height: 100vh;
+  background-color: #202020;
+  border: 1px solid transparent;
+  position: fixed;
+  top: 0;
+  right: -520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+align-items: center;
+  z-index: 1;
+  transition: right .5s;
+  z-index: 2;
+}
+
+
+.navSection-opened {
+  right: 0px;
+}
+
+.navSectionPopup {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top:0;
+  left: 0;
+  display: none;
+  background-color: #000000;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.navSectionPopup-opened {
+display: block;
+}
+
+
+.header__minNavLink {
+  font-family: Inter;
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 22px;
+/* identical to box height */
+
+text-align: center;
+text-decoration: none;
+color: #FFFFFF;
+margin-bottom: 28px;
+}
+
+.header__minNavLink__marginFirst {
+  margin-top: 159px;
+}
+
+.header__minNavLink_active {
+border-bottom: 2px solid #FFFFFF;
+padding-bottom: 4px;
+}
+
+.header__minNavButton {
+  margin-top: auto;
+  background: #313131;
+  border-radius: 20px;
+  width: 100px;
+height: 32px;
+font-family: Inter;
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 16px;
+/* identical to box height, or 114% */
+
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+text-decoration: none;
+color: #FFFFFF;
+margin-bottom: 90px;
+}
+
+.header__minNavClose {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  background-image: url('../../images/close.svg');
+  background-position: center;
+  z-index: 2;
+  background-color: inherit;
+  border: none;
+}
+
+@media screen and (max-width: 770px) {
+  .maxHeaderNav {
+    display: none;
+  }
+  
+  .minHeaderNav {
+    display: flex;
+    }
+}
+@media screen and (max-width: 520px) {
+.navSection {
+  width: 100%;
+}}
+
+
+@media screen and (max-width: 450px) {
+.header__link {
+  font-weight: 500;
+font-size: 10px;
+line-height: 16px;
+margin-right: 14px;
+}
+.header__button {
+  width: 54px;
+  height: 26px;
+  font-weight: 500;
+font-size: 10px;
+line-height: 16px;
+}
+
+
+} 

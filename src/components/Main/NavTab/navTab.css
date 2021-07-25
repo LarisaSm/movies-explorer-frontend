@@ -1,0 +1,47 @@
+.navTab {
+  min-height: 66px;
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: #272727;;
+ 
+}
+
+.navTab__link {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  /* identical to box height, or 123% */
+  
+  display: flex;
+  align-items: center;
+  text-decoration-line: underline;
+  margin-right: 40px;
+  color: #FFFFFF;
+}
+
+.navTab__link:visited {
+  color: #FFFFFF;
+}
+
+.navTab__link:focus{
+  outline: none;
+}
+
+.navTab__link:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 4500px) {
+.navTab__link {
+
+  font-weight: 500;
+font-size: 11px;
+line-height: 16px;
+margin-right: 24px;
+
+}
+}

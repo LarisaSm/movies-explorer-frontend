@@ -1,0 +1,40 @@
+@import url('../AuthForm/authForm.css');
+
+.login {
+  max-width: 396px;
+  width: 80%;
+  margin: auto;
+}
+
+.register__logo {
+  width: 38px;
+  height: 38px;
+  margin: 70px auto 40px 0;
+}
+
+.register__label{
+  display: block;
+  font-family: Inter;
+font-style: normal;
+font-weight: normal;
+font-size: 10px;
+line-height: 12px;
+
+color: #8B8B8B;
+margin-bottom: 10px;
+}
+
+
+@media screen and (max-width: 835px) {
+.register__logo {
+  margin-top: 232px;
+}
+}
+
+@media screen and (max-width: 450px) {
+.register__logo {
+  margin: auto;
+}
+
+
+}

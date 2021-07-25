@@ -1,0 +1,14 @@
+.savedMoviesSection {
+  width: 100%;
+}
+
+.savedMovies {
+  width: 90%;
+  margin: auto;
+}
+
+@media screen and (max-width: 835px) {
+.savedMovies {
+  width: 94%;
+}
+}
