@@ -12,7 +12,7 @@ Movies-explorer — сервис поиска документальных фи�
 
 1. Склонировать репозиторий
 ```
-git clone https://github.com/lenapronina/movies-explorer-frontend.git
+git clone https://github.com/LarisaSm/movies-explorer-frontend.git
 ```
 
 2. Перейти в директорию с проектом
