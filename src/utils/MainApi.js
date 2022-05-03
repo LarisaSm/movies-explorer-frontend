@@ -2,7 +2,8 @@
 
 // export const BASE_URL = "https://auth.nomoreparties.co";
 // export const BASE_URL = "http://localhost:3005";
-export const BASE_URL = "https://api.larisasm.nomoredomains.icu";
+//export const BASE_URL = "https://api.larisasm.nomoredomains.icu";
+export const BASE_URL = "https://smirnova-movies-api.netlify.app";
 // const TOKEN = "123eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGMzNjdmZDdmOTc5YjEyYzJmMTE1MGMiLCJpYXQiOjE2MjM0MTg4ODMsImV4cCI6MTYyNDAyMzY4M30.GaK4DsjbyysPaTUC65lYfc46gFV7_yuDrxpT__J5j8g";
 
 export const getSavedMovies = (token) => {
